@@ -1,7 +1,7 @@
 <template>
-  <div class="logo d-flex align-items-center">
+  <header class="logo">
     <img src="../assets/img/logo-spotify.png" alt="">
-  </div>
+  </header>
 </template>
 
 <script>
@@ -11,9 +11,10 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~bootstrap/scss/bootstrap.scss';
 
   .logo{
+    display: flex;
+    align-items: center;
     width: 100%;
     height: 60px;
     background-color: #2e3a46;
