@@ -2,38 +2,56 @@
   <main>
     <div class="container">
 
-      <AlbumList />
-      <AlbumList />
-      <AlbumList />
-      <AlbumList />
-      <AlbumList />
-      <AlbumList />
-      <AlbumList />
-      <AlbumList />
-      <AlbumList />
-      <AlbumList />
+      <Album 
+      v-for="album in listaAlbum" 
+      :key="album.id"
+      :album="album"
+      />
 
     </div>
   </main>
 </template>
 
 <script>
-import AlbumList from './Albumlist.vue'
+import axios from 'axios';
+import Album from './Album.vue';
 
 export default {
   nome: "Main",
   components:{
-    AlbumList
+    Album,
+  },
+  data(){
+    return{
+      listaAlbum:[]
+    }
+  },
+  methods:{
+    getApi(){
+      axios.get('https://flynn.boolean.careers/exercises/api/array/music')
+      .then(r => {
+        console.log('r',r);
+        this.listaAlbum = r.data.response;
+      })
+      .catch(e =>{
+        console.log(e);
+      })
+    }
+  },
+  mounted(){
+    this.getApi();
   }
 }
 </script>
 
 <style lang="scss">
+@import '~@fontsource/be-vietnam-pro/index.css';
+
 
   main{
     height: calc(100% - 60px) ;
     background-color: #1e2d3b;
-    padding-top: 60px;
+    padding-top: 40px;
 
     .container{
       width: 60%;
