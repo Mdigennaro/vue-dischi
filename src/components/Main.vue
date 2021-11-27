@@ -1,29 +1,34 @@
 <template>
   <main>
-    <div class="container">
 
+    <div v-if="loaded" class="container">
       <Album 
       v-for="album in listaAlbum" 
       :key="album.id"
       :album="album"
       />
-
     </div>
+
+      <Loader class="caricamento" v-else/>
+
   </main>
 </template>
 
 <script>
 import axios from 'axios';
 import Album from './Album.vue';
+import Loader from './Loader.vue'
 
 export default {
   nome: "Main",
   components:{
     Album,
+    Loader
   },
   data(){
     return{
-      listaAlbum:[]
+      listaAlbum:[],
+      loaded: false
     }
   },
   methods:{
@@ -32,9 +37,11 @@ export default {
       .then(r => {
         console.log('r',r);
         this.listaAlbum = r.data.response;
+        this.loaded = true;
       })
       .catch(e =>{
         console.log(e);
+
       })
     }
   },
@@ -61,7 +68,14 @@ export default {
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
+
     }
+
+    .caricamento{
+      text-align: center;
+      margin-top: 150px;
+    }
+
   }
 
 </style>
