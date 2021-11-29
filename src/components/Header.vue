@@ -1,12 +1,28 @@
 <template>
   <header class="logo">
+
     <img src="../assets/img/logo-spotify.png" alt="">
+
+    <Selezione @sendSearch="genereSelezionato" />
+
   </header>
 </template>
 
 <script>
+import Selezione from './Selezione.vue'
+
 export default {
-  nome: "Header"
+  nome: "Header",
+
+  components:{
+    Selezione
+  },
+
+  methods:{
+    genereSelezionato(value){
+      console.log('value', value);
+    }
+  }
 }
 </script>
 
@@ -14,6 +30,7 @@ export default {
 
   .logo{
     display: flex;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
     height: 60px;
@@ -22,6 +39,7 @@ export default {
     img{
       width: 70px;
     }
+
   }
 
 </style>
