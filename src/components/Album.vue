@@ -31,6 +31,7 @@ export default {
   padding: 20px;
   margin-bottom: 20px;
   text-align: center;
+  margin:10px;
 
   img{
     width: 100%;

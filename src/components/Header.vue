@@ -3,26 +3,33 @@
 
     <img src="../assets/img/logo-spotify.png" alt="">
 
-    <Selezione @sendSearch="genereSelezionato" />
+    <select name="genere" 
+    id="genere"
+    v-model="genre"
+    @change="$emit('changeGenere',genre)"
+    >
+      <option value="" selected>Tutti i generi</option>
+      <option value="Metal">Metal</option>
+      <option value="Jazz">Jazz</option>
+      <option value="Pop">Pop</option>
+      <option value="Rock">Rock</option>
+    </select>
+
 
   </header>
 </template>
 
 <script>
-import Selezione from './Selezione.vue'
 
 export default {
   nome: "Header",
 
-  components:{
-    Selezione
+  data(){
+    return{
+      genre :'',
+    }
   },
 
-  methods:{
-    genereSelezionato(value){
-      console.log('value', value);
-    }
-  }
 }
 </script>
 
@@ -38,6 +45,16 @@ export default {
 
     img{
       width: 70px;
+    }
+
+    
+    #genere{
+      margin-right: 25px;
+      background-color: #50d850;
+      color: black;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 5px;
     }
 
   }

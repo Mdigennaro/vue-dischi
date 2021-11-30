@@ -1,8 +1,8 @@
 <template>
 
   <div id="app">
-    <Header />
-    <Main />
+    <Header @changeGenere="genereSelezionato" />
+    <Main :genereAttivo="genereAttivo"/>
   </div>
 
 </template>
@@ -16,6 +16,21 @@ export default {
   components: {
     Header,
     Main,
+  },
+
+  data(){
+    return{
+      genereAttivo:'',
+    }
+  },
+
+  methods:{
+    genereSelezionato(genre){
+
+      this.genereAttivo = genre;
+      console.log(genre);
+
+    }
   }
 }
 </script>
